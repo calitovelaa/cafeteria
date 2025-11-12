@@ -25,7 +25,7 @@ class ProductoSeeder extends Seeder
         ]);
         Producto::create([
             'nombre' => 'Huevos al gusto',
-            'precio' => 70,
+            'precio' => 72,
             'imagen' => 'huevos.jpg',
         ]);
         Producto::create([
