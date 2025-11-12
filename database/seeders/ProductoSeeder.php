@@ -20,7 +20,7 @@ class ProductoSeeder extends Seeder
         ]);
         Producto::create([
             'nombre' => 'Tacos',
-            'precio' => 60,
+            'precio' => 62,
             'imagen' => 'tacosBis.jpg',
         ]);
         Producto::create([
