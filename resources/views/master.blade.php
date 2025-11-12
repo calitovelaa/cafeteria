@@ -40,7 +40,7 @@
                             <a class="nav-link" href="{{ route('inicio') }}">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('pedidos') }}">Pedidos</a>
+                            <a class="nav-link" href="{{ route('ordenarProductos') }}">Ordenar</a>
                         </li>
                     </ul>
                 </div> 
