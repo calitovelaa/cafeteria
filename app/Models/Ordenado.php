@@ -11,7 +11,7 @@ class Ordenado extends Model
     use HasFactory;
 
     protected $fillable = [
-        'pedido_id',
+        'producto_id',
         'nombre',
         'precio',
         'imagen',

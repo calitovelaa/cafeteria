@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ordenados', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('pedido_id');
+            $table->unsignedInteger('producto_id');
             $table->string('nombre', 30);
             $table->integer('precio');
             $table->string('imagen',30);

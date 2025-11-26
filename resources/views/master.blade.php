@@ -47,7 +47,9 @@
             </div>
 
         </nav>
-        <main class="container mt-4">
+        @yield('titulo')
+        
+                <main class="container mt-4">
             @yield('contenido')
         </main>
 

@@ -8,6 +8,10 @@ Route::get('/', function () {
     return view('inicio');
 })->name('inicio');
 
+Route::get('/agregarProducto/{id}', [PedidoController::class, 'agregarProducto'])->name('agregarProducto');
+
 Route::get('/ordenarProductos', [ProductoController::class, 'getProductos'])->name('ordenarProductos');
 
-Route::get('/generarPedido', [PedidoController::class, 'getOrdenado']);
+Route::get('/ordenadoMas/{id}', [PedidoController::class, 'masCantidad'])->name('ordenadoMas');
+
+Route::get('/ordenadoMenos/{id}', [PedidoController::class, 'menosCantidad'])->name('ordenadoMenos');
