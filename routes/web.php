@@ -8,10 +8,17 @@ Route::get('/', function () {
     return view('inicio');
 })->name('inicio');
 
-Route::get('/agregarProducto/{id}', [PedidoController::class, 'agregarProducto'])->name('agregarProducto');
+Route::get('/generarPedido', 
+[PedidoController::class, 'getOrdenado'])->name('generarPedido');
 
-Route::get('/ordenarProductos', [ProductoController::class, 'getProductos'])->name('ordenarProductos');
+Route::get('/agregarProducto/{id}', 
+[PedidoController::class, 'agregarProducto']);
 
-Route::get('/ordenadoMas/{id}', [PedidoController::class, 'masCantidad'])->name('ordenadoMas');
+Route::get('/ordenarProductos', 
+[ProductoController::class, 'getProductos'])->name('ordenarProductos');
 
-Route::get('/ordenadoMenos/{id}', [PedidoController::class, 'menosCantidad'])->name('ordenadoMenos');
+Route::get('/ordenadoMas/{id}', 
+[PedidoController::class, 'masCantidad']);
+
+Route::get('/ordenadoMenos/{id}',
+ [PedidoController::class, 'menosCantidad']);

@@ -10,10 +10,10 @@ use App\Models\Pedido;
 class PedidoController extends Controller
 {
 
-    public function getOrdenado () {
-    $ordenados = Ordenado::orderBy('nombre','asc')->get();
-    return view('generarPedido',compact('ordenado'));
-    }
+    public function getOrdenado() {
+    $ordenado = Ordenado::orderBy('nombre', 'asc')->get();
+    return view('generarPedido', compact('ordenado'));
+}
 
     public function agregarProducto ($id) {
        $ordenado = new Ordenado();   
@@ -26,4 +26,21 @@ class PedidoController extends Controller
        $ordenado->save();
        return redirect('/ordenarProductos');
    }
+    public function masCantidad($id) {
+        $ordenado = Ordenado::find($id);
+        $ordenado->cantidad = $ordenado->cantidad + 1;
+        $ordenado->save();
+        return redirect('/generarPedido');
+    }
+
+    public function menosCantidad($id) {
+        $ordenado = Ordenado::find($id);
+        $ordenado->cantidad = $ordenado->cantidad - 1;
+        if ($ordenado->cantidad < 1) {
+            $ordenado->delete();
+        } else {
+            $ordenado->save();
+        }
+        return redirect('/generarPedido');
+    }
 }
