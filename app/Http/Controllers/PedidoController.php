@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Ordenado;
 use App\Models\Producto;
 use App\Models\Pedido;
+use App\Models\Detalle;
 
 class PedidoController extends Controller
 {
@@ -40,6 +41,32 @@ class PedidoController extends Controller
             $ordenado->delete();
         } else {
             $ordenado->save();
+        }
+        return redirect('/generarPedido');
+    }
+
+    public function grabarPedido(Request $request) {
+        $pedido = new Pedido();
+        $datos = $request->input();
+        $pedido->nombre = $datos['nombre'];
+        $pedido->origen = $datos['origen'];
+        $pedido->fecha = now();
+        $pedido->total = $datos['total'];
+        $pedido->save();
+
+        $ordenado = Ordenado::orderBy('nombre', 'asc')->get();
+        foreach ($ordenado as $ordenados) {
+            $detalle = new Detalle();
+            $detalle->producto_id = $ordenados->producto_id;
+            $detalle->nombre = $ordenados->nombre;
+            $detalle->precio = $ordenados->precio;
+            $detalle->imagen = $ordenados->imagen;
+            $detalle->cantidad = $ordenados->cantidad;
+            $detalle->pedido_id = $pedido->id;
+            $detalle->save();
+        }
+        foreach ($ordenado as $ordenados) {
+            $ordenados->delete();
         }
         return redirect('/generarPedido');
     }
