@@ -42,6 +42,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('ordenarProductos') }}">Ordenar</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('verPedidos') }}">Ver Pedidos</a>
+                        </li>
                     </ul>
                 </div> 
             </div>

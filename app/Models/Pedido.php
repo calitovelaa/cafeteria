@@ -16,4 +16,8 @@ class Pedido extends Model
         'fecha',
         'total',
     ];
+
+    public function detalles(){
+        return $this->hasMany(Detalle::class);
+    }
 }

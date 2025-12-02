@@ -70,4 +70,18 @@ class PedidoController extends Controller
         }
         return redirect('/generarPedido');
     }
+
+    public function verPedidos() {
+        $pedidos = Pedido::with('detalles')->orderBy('id', 'desc')->get();
+        return view('verPedidos', compact('pedidos'));
+    }
+
+    public function eliminarPedido($id) {
+        $pedido = Pedido::find($id);
+        if ($pedido) {
+            Detalle::where('pedido_id', $pedido->id)->delete();
+            $pedido->delete();
+        }
+        return redirect('/verPedidos')->with('Pedido eliminado correctamente');
+    }
 }
